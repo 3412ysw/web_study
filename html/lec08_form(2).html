@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼태그(2)</title>
+</head>
+<body>
+    <!-- color 타입 -->
+    <input type="color" id="head" name="head"
+    value="#e66465">
+    <!-- number,range 타입 -->
+    <input type="number" min="3" max="10" step="1">
+    <input type="range" min="3" max="10" step="1">
+    <textarea col="30" rows="3"></textarea>
+    <br>
+    <!-- 날짜 정보 -->
+    <input type="date" value="2025-01-12" 
+    min="2025-01-01" max="2025-01-13">
+    <input type="month" min="2025-10">
+    <input type="time" value="16:10">
+    <br>
+    <!-- checkbox :name이 같은 여러개 값 선택 -->
+    <input type="checkbox" value="1" id="jja">
+    <label for="jja">향원 간짜장에 계란 후라이 추가</label>
+    <input type="checkbox" value="2" id="bok"
+    name="lunch">
+    <label for="bok">향원 계란 볶음밥</label>
+    <!-- radio : name 이 같은 것중에 하나만 -->
+    <input type="radio" value="1"
+    id="seoul" name="addr">
+    <label for="seoul">서울</label>
+    <input type="radio" value="2"
+    id="dae" name="addr">
+    <label for="dae">대전</label>
+    <input type="radio" value="3"
+    id="hw" name="addr">
+    <label for="hw">향원</label><br>
+
+    <!-- select 태그 -->
+    <select name="user_select" id="user_select">
+        <option value="">함봐봐라</option>
+        <option value="1">간짜장</option>
+        <option value="2">고추짬뽕</option>
+        <option value="3">탕슈육~</option>
+    </select><br>
+
+    <!-- progress 태그 -->
+    <progress max="100" value="7"></progress><br>
+
+    <!-- button 태그 -->
+    <form method="get" name="testFrm" action="#">
+        <input type="text" required>
+        <button type="botton"
+        onclick="alert('앵ㅋ')">버튼</button>
+        <button type="submit">제출</button>
+        <button type="reset">테스트</button>
+    </form><br>
+
+
+    <!-- 연습하기 -->
+    <h1>피자 주문하기</h1>
+    <form method="get" action="#">
+    <fieldset>
+        <legend>고객정보</legend>
+        <label for="userid">고객명
+            <input type="text" id="userid" required><br>
+        <label for="userphone">전화번호
+            <input type="text" id="userphone" required><br>
+        </label>
+        <label for="usermail">E-mail
+            <input type="email" id="usermail" required><br>
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>피자 사이즈</legend>
+        <input type="radio" value="1"
+        id="s" name="topping">
+        <label for="s">Small</label>
+        <input type="radio" value="2"
+        id="m" name="topping">
+        <label for="m">Medium</label>
+        <input type="radio" value="3"
+        id="l" name="topping">
+    <label for="l">Large</label><br>
+    </fieldset>
+    <fieldset>
+        <legend>토핑 선택</legend>
+        <input type="checkbox" value="1" id="1">
+        <label for="1">새우</label><br>
+        <input type="checkbox" value="1" id="2">
+        <label for="2">고구마</label><br>
+        <input type="checkbox" value="1" id="3">
+        <label for="3">감자</label><br>
+        <input type="checkbox" value="1" id="4">
+        <label for="4">파인애플</label>
+    </fieldset>
+    희망 배송 시간 : <input type="time"><br><br>
+    <button type="submit">주문하기</button>
+</form>
+<br><br><br>
+</body>
+</html>
