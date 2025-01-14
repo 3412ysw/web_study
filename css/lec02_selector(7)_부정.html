@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부정 선택자</title>
+    <style>
+        #container > .n:not(span){background-color: aqua;}
+        #container > :not(p){color:crimson;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <P>Lorem ipsum dolor sit amet</P>
+        <P class="n">Lorem ipsum dolor sit amet</P>
+        <span class="n">Lorem ipsum dolor sit amet</span>
+        <div>Lorem ipsum dolor sit amet</div>
+    </div>
+
+    <style>
+        h1{color: blue;}
+        h1{color:palevioletred}
+    </style>
+    <h1>확인</h1>
+
+    <style>
+        #a{color:gold;}
+        .b{color:red;}
+        p{color:purple !important;}
+    </style>
+    <p style="color: plum;" class="b" id="a">우선순위</p>
+
+</body>
+</html>
