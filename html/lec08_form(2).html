@@ -105,19 +105,102 @@
     <form>
         <fieldset>
             <legend>납품자 정보</legend>
-            <label for="name">1.납품자명 :
-            <input type="text" id="name" placeholder="name">
-            </label><br>
-            <label for="mail">2.email :
-            <input type="email" id="mail" placeholder="hkd@naver.com">
+            <ol>
+                <li><label for="name">납품자명 :
+                <input type="text" id="name" placeholder="name">
+                </label></li><br>
+                <li><label for="mail">email :
+                <input type="email" id="mail" placeholder="hkd@naver.com">
+                </label></li>
             </label>
-        </fieldset>
+            </ol>
+        </fieldset><br>
         <fieldset>
-            <legend>납품정보</legend>
-            <label></label>
+            <ul>
+                <legend>납품정보</legend>
+                <li><label for="title">상품명 :
+                    <input type="text" id="title">
+                </label></li>
+                <li><label for="count">납품수량 :
+                    <input type="number" id="count" placeholder="최소 100">
+                </label></li>
+                <li><label for="level">납품등급 :
+                    <input type="range" id="level" min="1" max="10" step="5">
+                </label></li>
+                <li><label for="other">기타사항:
+                    <textarea id="other" col="20" rows="3"></textarea>
+                </label></li>
+            </ul>
         </fieldset>
         <button type="submit">send message</button>
+    </form>
+
+    <h1>회원가입</h1>
+    <form>
+        <fieldset>
+            <legend>필수 입력 사항</legend>
+            <table>
+                <tr>
+                    <th>
+                        <label for="u_id">ID</label>
+                    </th>
+                    <td>
+                        <input type="text" id="u_id" 
+                        placeholder="아이디 10글자 이내">
+                    </td>
+                    <td><button>중복확인</button></td>
+                </tr>
+                <tr>
+                    <th><label for="u_pw">비밀번호</label></th>
+                    <td>
+                        <input type="password" id="u_pw"
+                        placeholder="영문,숫자 포함 8자리 이상">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="check">비밀번호 확인</label>
+                    </th>
+                    <td>
+                        <input type="password" id="check">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="e_mail">Email</label>
+                    </th>
+                    <td>
+                        <input type="email" id="e_mail">
+                    </td>
+                    <td>
+                        <select id="user_select">
+                            <option value="">직접입력</option>
+                            <option value="1">@naver.com</option>
+                            <option value="2">@gmail.com</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>추가 정보</legend>
+            <label for="pic">프로필 사진: 
+                <input type="file" accept="image/jpeg" id="pic"><br>
+            </label>
+            <label for="male">
+                <input type="radio" value>
+            </label>
+        </fieldset>
     </form>
 <br><br><br>
 </body>
 </html>
+<input type="radio" value="1"
+    id="seoul" name="addr">
+    <label for="seoul">서울</label>
+    <input type="radio" value="2"
+    id="dae" name="addr">
+    <label for="dae">대전</label>
+    <input type="radio" value="3"
+    id="hw" name="addr">
+    <label for="hw">향원</label><br>
