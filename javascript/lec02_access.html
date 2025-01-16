@@ -161,7 +161,37 @@
             var div1 = document.getElementById('container');
             div1.style.backgroundColor = box;
         }
+    </script><br><br>
+
+    <input type="button" value="50X50" onclick="change1();" id="box1">
+    <input type="button" value="100X100" onclick="change2();" id="box2">
+    <input type="button" value="200X200" onclick="change3();" id="box3"><br><br>
+    <style>
+        #con1{
+            width: 100px; height: 100px;
+            background-color: black;        
+        }
+    </style>
+    <div id="con1"></div>
+    <script>
+        function change1(){
+            var a1 = document.getElementById('con1');
+            a1.style.width = '50px';
+            a1.style.height = '50px';
+        }
+        function change2(){
+            var a1 = document.getElementById('con1');
+            a1.style.width = '100px';
+            a1.style.height = '100px';
+        }
+        function change3(){
+            var a1 = document.getElementById('con1');
+            a1.style.width = '200px';
+            a1.style.height = '200px';
+        }
     </script>
+
+
 
     <h2>innerHTML</h2>
     <div id="test1">
@@ -182,6 +212,36 @@
         }
     </script>
 
+
+    <h1>과제</h1>
+    <label for="user">구매자 :  
+        <input type="text" id="user" placeholder="구매자 이름을 입력하세요.">
+    </label><br>
+    <label for="productName">상품명 :  
+        <input type="text" id="productName" placeholder="구매 상품명명을 입력하세요.">
+    </label><br>
+    <label for="price">가격 :  
+        <input type="text" name="price" placeholder="구매 가격격을 입력하세요.">
+    </label><br><br>
+    <button type="button" onclick="ptintResult();">입력값 출력하기</button><br><br>
+    <style>
+        #boxxx{
+            width: 500px; height: 200px;
+            background-color: lemonchiffon;
+        }
+    </style>
+    <div id = "boxxx"></div>
+
+    <script>
+        function ptintResult(){
+            var t1 = document.getElementsByTagName('label');
+            console.log(t1[0]);
+            var t2 = document.getElementById('productName').value;
+            console.log(t2);
+            var t3 = document.getElementsByName('price');
+            console.log(t3);
+        }
+    </script>
 
 
     <br><br><br>
