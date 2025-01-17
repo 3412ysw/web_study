@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수</title>
+</head>
+<body>
+    <input type="button" value="지역변수 부르기"
+    onclick="localFunc();">
+
+    <script>
+        // 1. 변수 선언
+        var test;
+        // 2. 변수 할당
+        test = 'JavaScript';
+        var test2 = 'JS';
+        // 3. 지역 VS 전역
+        function localFunc(){
+            var locarVar = '나는야 지역변수';
+            console.log(locarVar);
+        }
+        // console.log(locarVar);
+        console.log(globalVar);
+        var globalVar = 'I am global';
+        function globalTest(){
+            console.log(globalVar);
+        }
+        // console.log(globalVar);
+        for(var i = 0 ; i < 4 ; i++){
+            console.log("안쪽!!"+i);
+        }
+        console.log("바깥쪽!!"+i);
+    </script>
+    <input type="button" value="전역변수 부르기"
+    onclick="globalTest();">
+    <script>
+        // 4.let과 const
+        if(true){
+            let x = 20;
+            console.log(x);
+        }
+        // console.log(x);
+        // console.log(y);
+        let y = 30;
+
+        const pi = 3.14;
+        console.log(pi);
+        // pi = 3.1457439586; 재할당 안됑 !!!
+    </script>
+    <input type="button" value="자료형 확인"
+    onclick="checkType();">
+    <script>
+        function checkType(){
+            console.log(typeof(insa));
+            console.log(typeof(name));
+            console.log(typeof(age));
+            console.log(typeof(price));
+            console.log(typeof(isAdmin));
+            console.log(typeof(person));
+            console.log(typeof(add1));
+            console.log(typeof(sum));
+        }
+        // 5.자료형
+        let insa = 'Hi';
+        let name = "마루";
+        let age = 5;
+        let price = 19.999;
+        let isAdmin = false;
+        let person = {
+            name:'마루' ,
+            age : 5,
+            sayHi : function(){
+                console.log('안뇽?');
+            }
+        };
+        function add1(a,b){
+            return a+b;
+        }
+        let sum = add1(5,3);
+    </script>
+    <script>
+        //6. falsy : 0 ,"",null,undefined
+        if(NaN){
+            console.log('O');
+        }else{
+            console.log('X');
+        }
+    </script>
+    <h1>형변환</h1>
+    <input type="button" value="문자+숫자"
+    onclick="strPlusNum();">
+    <script>
+        function strPlusNum(){
+            let num1 = 30;
+            let num2 = '30';
+            console.log(typeof(num1),typeof(num2));
+            if(num1 == num2){
+                console.log('OO');
+            }
+            console.log(num1+num2);
+            console.log(num1*num2);
+            console.log(num1*'test'); // 안됌 ㄷㄷ
+            console.log(num1-num2);
+            console.log(num1/num2);
+            console.log(num1%num2);
+        }
+    </script>
+
+    <h1>강제 형변환환</h1>
+    <label for="numInput">숫자</label>
+    <input type="number" id="numInput"><br>
+    <input type="button" value="숫자->문자"
+    onclick="convertNumToStr();">
+    <script>
+        function convertNumToStr(){
+            let numVal = document.getElementById('numInput').value;
+            console.log(numVal,typeof(numVal));
+            //number 타입 value는 Strung이다
+            let numVal2 = Number(numVal);
+            console.log(typeof(numVal2));
+            let strVal = numVal2.toString();
+            console.log(typeof(strVal));
+        }
+    </script><br><br>
+
+    <!-- 연습하깅 -->
+    <label for="number1">첫번째 수 : </label>
+    <input type="number" id="number1"><br>
+    <label for="number2">두번째 수 : </label>
+    <input type="number" id="number2">
+    <input type="button" value="더하기" onclick="plusNumber();">
+    
+    <script>
+        function plusNumber(){
+            let num = document.getElementById('number1').value;
+            let num1 = Number(num);
+            console.log(typeof(num1));
+            let num2 = document.getElementById('number2').value;
+            let num3 = Number(num2);
+            console.log(typeof(num3));
+            alert(num1+num3);
+        }
+    </script>
+
+</body>
+</html>
