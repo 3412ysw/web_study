@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window</title>
+</head>
+<body>
+    <h1>창 열고 닫기</h1>
+    <button onclick="createWindow();">새로운 창 열기</button>
+    <script>
+        let newWindow;
+        let createWindow = function(){
+            // window.open();
+            // window.open('https://naver.com');
+            // window.open('https://naver.com','_self');
+            // window.open('https://naver.com','_blank');
+            // window.open('https://naver.com','_balnk','width=300,height=300');
+            newWindow = open('https://naver.com','_balnk','width=300,height=300');
+        }
+    </script>
+    <button onclick="closeWindow();">창 닫기</button>
+    <script>
+        let closeWindow = function(){
+            // window.close();
+            newWindow.close();
+        }
+    
+    </script>
+        <button onclick="openInput();">입력창 열기</button>
+        <button onclick="getInfo();">입력창 정보 가져오기</button>
+        <script>
+            let openInput = function(){
+                newWindow = open('','_blank','width=300,height=300');
+                newWindow.document.write(`<label for="text_input">입력</label>
+                                        <input type="text" id="text_input">`);
+            }
+            let getInfo = function(){
+                let textInput = newWindow.document.getElementById('text_input').value;
+                console.log(textInput);
+            }
+    </script>
+
+
+    <h1>연습하기</h1>
+    <button onclick="openLogin();">로그인</button>
+    <script>
+        let loginUser;
+        let openLogin = function(){
+            loginUser = open('','_blank','width=300,height=300');
+            loginUser.document.write(`<label for="userId">아이디 : </label>
+                                        <input type="text" id="userId"><br>
+                                        <label for="userPw">비밀번호 : </label>
+                                        <input type="password" id="userPw"><br>
+                                        <button onclick="window.close();">닫기</button>`);                            
+        }
+    </script>
+
+    <h1>창에 변화주기</h1>
+    <button onclick="moveTest();">창 위치 변경</button>
+    <script>
+        const moveTest = function(){
+            newWindow.moveTo(Math.round(Math.random()*900)+1,500);
+            //resizeTo(width,height);
+            newWindow.resizeTo(100,300);
+        }
+    </script>
+
+    <h1>timeout</h1>
+    <button onclick="timeoutStart();">시작</button>
+    <button onclick="timeoutEnd();">종료</button>
+    <div id="container"></div>
+    <script>
+        let globalTime;
+        let timeoutStart = function(){
+            globalTime = setTimeout(function(){
+                document.getElementById('container').innerHTML = '<h1>타임아웃 ㅋ </h1>'
+            },5000);
+        }
+        let timeoutEnd = function(){
+            clearTimeout(globalTime);
+        }
+    </script>
+
+    <h1>interval</h1>
+    <button onclick="intervalStart();">시작</button>
+    <button onclick="intervalEnd();">종료</button>
+    <script>
+        let inter;
+        const intervalStart = function(){
+            let num = 10;
+            inter = setInterval(function(){
+                document.getElementById('container').innerHTML += num-- +'<br>';
+            },1000);
+        }
+        const intervalEnd = function(){
+            clearInterval(inter);
+        }
+    </script>
+
+    <h1>연습하기</h1>
+    <p><span id="countsecond">60</span>초</p>
+    <p>다음 중 프론트엔드 개발자가 다루는 언어가 아닌 것은?</p>
+    <select id="user_select">
+        <option>선택하기</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select><br>
+    <ol>
+        <li>CSS</li>
+        <li>HTML</li>
+        <li>JavaScript</li>
+        <li>java</li>
+    </ol>
+    <button onclick="countStart();">시작</button>
+    <button onclick="countEnd();">제출</button>
+    <script>
+        let count;
+        let answer;
+        const countStart = function(){
+            console.log(answer);
+            let num = 60;
+            count = setInterval(function(){
+                document.getElementById('countsecond').innerHTML = num--;
+                if(num==0){
+                    clearInterval(count);
+                    alert('시간 초과');
+                }
+            },1000);
+        }
+        const countEnd = function(){
+            answer = Number(document.getElementById('user_select').value);
+            if(answer==4){
+                clearInterval(count);
+                alert('정답이당');
+            }else{
+                alert('틀렷옹 ㅜㅜ');
+            }
+        }
+    </script>
+
+    <h1 id="before_ele">before(전)</h1>
+    <script>
+        window.onload = function(){
+            console.log(document.getElementById('before_ele').innerText);
+            console.log(document.getElementById('after_ele').innerText);
+        }
+    </script>
+    <h1 id="after_ele">after(후)</h1>
+    <button onclick="printInformation(screen);">screen 객체 출력</button>
+    <button onclick="printInformation(navigator);">navigator 객체 출력</button>
+    <button onclick="printInformation(history);">history 객체 출력</button>
+    <button onclick="printInformation(location)">location 객체 출력</button>
+    <div id="screen_div">
+
+    </div>
+    <script>
+        let printInformation = function(obj){
+            const div = document.getElementById('screen_div');
+            for(key in obj){
+                div.innerHTML += `${key} : ${obj[key]} <br>`;
+            }
+        }
+    </script>
+    <button onclick="history.back();">이전</button>
+    <button onclick="history.forward();">앞으로</button>
+
+    <button onclick="location.href='https://www.naver.com';">href</button>
+    <button  onclick="location.assign('https://www.naver.com');">assign</button>
+    <button onclick="location.replace('https://www.naver.com');">replace</button>
+    <button onclick="location.reload();">reload</button>
+
+    <h1>텍스트 노트가 있는 태그 생성</h1>
+    <button onclick="addTextElement();">태그 추가</button>
+    <button onclick="createImg();">이미지 추가</button>
+    <div id="tag_div"></div>
+    <script>
+        const createImg = function(){
+            const imgTag = document.createElement('img');
+            imgTag.setAttribute('src','../resources/dung.png');
+            imgTag.setAttribute('alt','뚱이 하이');
+            imgTag.setAttribute('width','200');
+            document.getElementById('tag_div').appendChild(imgTag);
+        }
+        const addTextElement = function(){
+            // document.getElementById('tag')
+            const pTag = document.createElement('p');
+            const pText = document.createTextNode('hello');
+            pTag.appendChild(pText);
+            document.getElementById('tag_div').appendChild(pTag);
+        }
+    </script>
+
+    <h3>기준</h3>
+    <ul id="sample_ul">
+        <li>복숭아</li>
+        <li>딸기</li>
+        <li>샤인머스켓</li>
+    </ul>
+    <h3>실제</h3>
+    <button onclick="makeList();">목록 생성</button>
+    <div id="ul_div"></div>
+    <script>
+        const makeList = function(){
+            const arr = ['복숭아','딸기','샤인머스캣'];
+            const ul = document.createElement('ul');
+            for(let i = 0 ; i < arr.length ; i++){
+                const li = document.createElement('li');
+                const text = document.createTextNode(arr[i]);
+                li.appendChild(text);
+                ul.appendChild(li);
+            }
+            document.getElementById('ul_div').appendChild(ul);
+            // const li1 = document.createElement('li');
+            // const text1 = document.createTextNode('복숭아');
+            // li1.appendChild(text1);
+
+            // const ul = document.createElement('ul');
+            // ul.appendChild(li1);
+            // document.getElementById('ul_div').appendChild(ul);
+        }
+    </script>
+
+    <h1>insertAdjacentElement</h1>
+    <style>
+        #insert_div{border: 1px solid palevioletred;}
+        #origin{background-color: lightgoldenrodyellow;}
+    </style>
+    <button onclick="insertTest();">원하는 위치에 추가</button>
+    <button onclick="changeInsert();">위치 변경</button>
+    <div id="insert_div">
+        <h1 id="origin">판단용</h1>
+    </div>
+    <script>
+        const changeInsert = function(){
+            const sample = document.getElementById('sample_ul');
+            const insertDiv = document.getElementById('insert_div');
+            insertDiv.insertAdjacentElement('beforeend',sample);
+        }
+
+        const insertTest = function(){
+            const h3= document.createElement('h3');
+            const h3Text = document.createTextNode('지정태그 앞(형제)');
+            h3.appendChild(h3Text);
+
+            const h2= document.createElement('h2');
+            const h2Text = document.createTextNode('지정태그 뒤(형제)');
+            h2.appendChild(h2Text);
+
+            const div = document.getElementById('insert_div');
+            div.insertAdjacentElement('beforebegin',h3);
+            // div.insertAdjacentElement('afterbegin',h3)
+            div.insertAdjacentElement('afterend',h2);
+        }
+    </script>
+
+
+    <h1>연습하기</h1>
+    <input type="text" placeholder="태그입력" id="addTag">
+    <input type="text" placeholder="문구입력" id="addText">
+    <input type="button" value="버튼" onclick="addTagText();">
+    <div id="test_div"></div>
+    <script>
+        const addTagText = function(){
+            const Tag = document.getElementById('addTag').value;
+            const Text = document.getElementById('addText').value;
+            const pTag = document.createElement(Tag);
+            const pText = document.createTextNode(Text);
+            pTag.appendChild(pText);
+            document.getElementById('test_div').appendChild(pTag);
+        }
+    </script>
+
+    <h1>연습하기</h1>
+    <button onclick="creatImgs();">생성</button>
+    <div id="input_div"></div>
+    <script>
+        let creatImgs = function(){
+            const inputTag = document.createElement('input');
+            inputTag.setAttribute('type','text');
+            inputTag.setAttribute('value','user01');
+            inputTag.setAttribute('id','user_id');
+            document.getElementById('input_div').appendChild(inputTag);
+        }
+    </script>
+
+    <h1>연습하기</h1>
+        <ul id="insert_ul">
+            <li>간짜장</li>
+            <li>볶음밥</li>
+            <li>탕수육</li>
+        </ul>
+        <input type="text" placeholder="추가할 메뉴 작성" id="writemenu">
+        <input type="button" value="추가" onclick="addMenu();">
+        <input type="button" value="이동" onclick="changeMenu();">
+        <script>
+            const addMenu = function(){
+                let newMenu = document.getElementById('writemenu').value;
+                const li = document.createElement('li');
+                const liText = document.createTextNode(newMenu);
+                li.appendChild(liText);
+                const ul = document.getElementById('insert_ul');
+                ul.appendChild(li);
+            }
+
+            const changeMenu = function(){
+                const insertUl = document.getElementById('insert_ul');
+                const lastLi = insertUl.lastElementChild;
+                insertUl.insertAdjacentElement('afterbegin',lastLi);
+            }
+        </script>
+
+    <h1>과제 - 왔다갔다 창 만들기</h1>
+    <button onclick="makeWindow();">창 만들기</button>
+    <button onclick="changeWindow();">자동 변경하기</button>
+    <button onclick="stopWindow();">멈추기</button>
+    <script>
+        let openWindow;
+        let interv;
+        const makeWindow = function(){
+            openWindow = open('','_blank','width=300,height=300');
+            openWindow.document.write(`<img src="../resources/image.png" style="width=150px,height=150px">`);
+        }
+        const changeWindow = function(){
+            // interv = setInterval(function(){
+            //     document.getElementById().innerHTML=
+            // },1000);
+        }
+        const stopWindow = function(){
+
+        }
+    </script>
+
+<!-- let inter;
+const intervalStart = function(){
+    let num = 10;
+    inter = setInterval(function(){
+        document.getElementById('container').innerHTML += num-- +'<br>';
+    },1000);
+} -->
+
+
+    <br> <br> <br> <br> <br>
+</body>
+</html>
