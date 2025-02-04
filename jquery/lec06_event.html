@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>on 메소드</h1>
+    <div id="on_div">
+        <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>javascript</li>
+        </ul>
+        <h3>h3이벤트</h3>
+    </div>
+    <script>
+        $(function(){
+            // $('#on_div > ul > li').on('mouseenter',function(){
+            //     console.log($(this).text());
+            // })
+            $('#on_div >ul>li').mouseenter(function(){
+                console.log($(this).text());
+            })
+            $('#on_div > h3').on({
+                'mouseenter' : function(){$(this).css('color','skyblue')},
+                'mouseleave' : function(){$(this).css('color','pink')}
+            });
+        })
+    </script>
+
+    <h1>off 메소드</h1>
+    <button id="offBtn">이벤트</button>
+    <script>
+        $(function(){
+            let count = 0;
+            $('#offBtn').on('click',function(){
+                if(count++<3){
+                    alert('버튼 클릭!');
+                }else{
+                    $(this).off('click');
+                }
+            })
+        })
+    </script><br>
+
+    <button id="darkBtn">야간 모드</button>
+    <button id="stopBtn">비활성화</button>
+    <style>
+        .btn_dark{
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('#darkBtn').click(function(){
+                $('body').toggleClass('btn_dark');
+            });
+            $('#stopBtn').click(function(){
+                $('#darkBtn').off('click');
+            })
+        })
+    </script>
+
+    <h1>이벤트 과제</h1>
+    <h1>1. 게시판</h1>
+    <h2>글쓰기</h2>
+    <div id="eventContainer">
+        <form name="eventFrm">
+            <label for="title">제목</label>
+            <input type="text" name="title" id="title"><br>
+            <label for="type">종류</label>
+            <select name="type" id="type">
+                <option value="0">선택</option>
+                <option value="1">공지</option>
+                <option value="2">질문</option>
+                <option value="3">자유</option>
+            </select><br>
+            <label for="content">내용</label>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <span></span>
+        </form>
+    </div>
+
+
+    <h1>2. 제곱 계산기</h1>
+    
+
+
+
+
+
+</body>
+</html>
