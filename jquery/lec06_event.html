@@ -122,17 +122,65 @@
             </select><br>
             <label for="content">내용</label>
             <textarea name="content" id="content" cols="30" rows="10"></textarea>
-            <span></span>
+            <span id="countNum">0</span>
+            <span>/100</span>
         </form>
     </div>
-
+    <script>
+        $(function(){
+            $('#content').keypress(function(){
+                let count = $('#content').val().length;
+                if(count<=100){
+                    $('#countNum').text(count);
+                }else{
+                    alert('야 그만써 ㅠ')
+                }
+            })
+            $('#type').change(function(){
+                let num = $(this).val();
+                if(num==1){
+                    console.log('1');
+                    $('#content').val(`행사명 :\n행사일 :\n장소 :`);
+                }else if(num==2){
+                    console.log('2');
+                    $('#content').val(`키워드 :\n요약 : `);
+                }else{
+                    console.log('3');
+                    $('#content').val('');
+                }
+                let count = $('#content').val().length;
+                if(count<=100){
+                    $('#countNum').text(count);
+                }else{
+                    alert('야 그만써 ㅠ')
+                }
+            })
+        
+        })
+    </script>
 
     <h1>2. 제곱 계산기</h1>
-    
+    <span id="num1">2</span>
+    <span>*</span>
+    <span id="num2">1</span>
+    <span>=</span>
+    <span id="resultNum">2</span><br>
+    <button id="clickBtn">클릭</button>
+    <script>
+        $(function(){
+            $('#clickBtn').click(function(){
+                let number1 = $('#num1').text();
+                let resultNumber = $('#resultNum').text();
+                $('#num2').text(2);
+                $('#num1').text(resultNumber);
+                $('#resultNum').text(resultNumber*2);
+            })
+        })
+    </script>
 
 
 
 
-
+<br><br><br><br>
 </body>
 </html>

@@ -69,6 +69,34 @@
         })
     </script>
 
+    <input type="button" value="공지 보기" id="changeBtn">
+    <style>
+        #notice_div {
+            width: 300px;
+            padding: 20px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: none; /* 초기에는 숨김 */
+        }
+    </style>
+    <div id="notice_div">
+        공지당~~~! 서버 점검으로 내일 02:00~04:00에 서비스 중단이욤 그때 쓰지마!
+    </div>
+    <script>
+        $(function(){
+            $('#changeBtn').click(function(){
+                $('#notice_div').slideToggle('slow',function(event){
+                    if($('#changeBtn').val()=='공지 숨기기'){
+                        $('#changeBtn').attr('value','공지 보기');
+                    }else{
+                        $('#changeBtn').attr('value','공지 숨기기');
+                    }
+                });
+            })
+        })
+    </script>
+
 <br><br><br><br>
 </body>
 </html>
